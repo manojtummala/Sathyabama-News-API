@@ -21,7 +21,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: start api
-        run: python server.py
+        run: python server.py &
 
       - name: test api
         run: curl http://127.0.0.1:5000/health | grep "working"
