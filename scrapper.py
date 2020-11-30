@@ -7,6 +7,8 @@ class News:
     def getevents() :
 
         response = {}
+        response['list'] = []
+
         url = 'https://sathyabama.ac.in/events'
         r = requests.get(url)
         # print(r.content)
@@ -14,38 +16,39 @@ class News:
         soup = BeautifulSoup(r.content, 'html5lib')
         # print(soup.prettify())
 
-        events=[]
-        # event = {}
+        eventList=[]
+        timeList = []
+        venueList = []
+        urlList = []
 
         table = soup.find('div', attrs = {'class':'view-content'})
         # print(table.prettify)
 
         for time in table.findAll('div', attrs = {'class':'time'}):
-            eventT={}
-            eventT = time.text.strip()
+            timeList.append(time.text.strip())
 
         for venue in table.findAll('div', attrs = {'class':'venue'}):
-            eventV = {}
-            eventV = venue.text.strip()
+            venueList.append(venue.text.strip())
 
         for title in table.findAll('div', attrs = {'class':'title'}):
-            event={}
-            event['Event'] = title.text.strip()
-            event['Time'] = eventT
-            event['Venue'] = eventV
-            event['url'] = 'https://sathyabama.ac.in/' + title.a['href']
-            events.append(event)
+            eventList.append(title.text.strip())
+            urlList.append('https://sathyabama.ac.in/' + title.a['href'])
 
-
-
-        # print(events)
-        # response['count'] = len(event)
-        response['list'] = events
+        for i in range(0,len(eventList)):
+            row = {}
+            row['News'] = eventList[i]
+            row['Time'] = timeList[i]
+            row['Venue'] = venueList[i]
+            row['URL'] = urlList[i]
+            response['list'].append(row)
+   
         return(response)
 
     @staticmethod
     def getnews():
         response = {}
+        response['list'] = []
+
         url = 'https://sathyabama.ac.in/'
         r = requests.get(url)
         # print(r.content)
@@ -53,30 +56,30 @@ class News:
         soup = BeautifulSoup(r.content, 'html5lib')
         # print(soup.prettify())
 
-        new = []
+        newsList = []
+        timeList = []
+        urlList = []
 
         table = soup.find('div', attrs = {'class':'view view-latest-news view-id-latest_news view-display-id-block_1 js-view-dom-id-2a4d342d0a75f95a8fd24a9e0c1443d7ff57c119c916ccd26ee73b7c6a763806'})
         # print(table.prettify)
+            
+        for field in table.findAll('div', attrs = {'class':'title'}):
+            newsList.append(field.text.strip())
 
-        for time in table.findAll('time'):
-            newsT ={}
-            newsT = time.text.strip()
+        for time in table.findAll('div', attrs={'class': 'date'}):
+            timeList.append(time.text.strip())
 
         for more in table.findAll('div', attrs = {'class':'view-more-right'}):
-            newsU = {}
-            newsU = 'https://sathyabama.ac.in' + more.a['href']
+            urlList.append('https://sathyabama.ac.in' + more.a['href'])
 
-        for field in table.findAll('div', attrs = {'class':'title'}):
-            news = {}
-            news['News'] = field.text.strip()
-            news['Time'] = newsT
-            news['Read More'] = newsU
+        for i in range(0,len(newsList)):
+            row = {}
+            row['News'] = newsList[i]
+            row['Time'] = timeList[i]
+            row['URL'] = urlList[i]
+            response['list'].append(row)
 
-            new.append(news)
-
-        # print(new)
-        # response['count'] = len(news)
-        response['list'] = new
+        # print(response)
         return(response)
 
 
