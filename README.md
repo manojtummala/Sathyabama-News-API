@@ -70,34 +70,9 @@ Result:
     {
         "News":"Post Graduate Diploma Course in Computational Biology",
         "Time":"Time: 08:00 AM",
-        "Venue":"Venue: Sathyabama - Online"
+        "Venue":"Venue: Sathyabama - Online",
         "URL":"https://sathyabama.ac.in//event/post-graduate-diploma-course-computational-biology"
-     },
+    },
   ]
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
