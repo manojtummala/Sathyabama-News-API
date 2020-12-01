@@ -62,13 +62,13 @@ Result:
 {
   "list":[
     {
-        "News":"AICTE Sponsored STTP on Digital Twin Technology (Phase - III)",
+        "Event":"AICTE Sponsored STTP on Digital Twin Technology (Phase - III)",
         "Time":"Time: 08:00 AM",
         "Venue":"Venue: Sathyabama - Online",
         "URL":"https://sathyabama.ac.in//event/aicte-sponsored-sttp-digital-twin-technology-phase-iii"
     },
     {
-        "News":"Post Graduate Diploma Course in Computational Biology",
+        "Event":"Post Graduate Diploma Course in Computational Biology",
         "Time":"Time: 08:00 AM",
         "Venue":"Venue: Sathyabama - Online",
         "URL":"https://sathyabama.ac.in//event/post-graduate-diploma-course-computational-biology"
