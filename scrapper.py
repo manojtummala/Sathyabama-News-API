@@ -60,11 +60,11 @@ class News:
         timeList = []
         urlList = []
 
-        table = soup.find('div', attrs = {'class':'view view-latest-news view-id-latest_news view-display-id-block_1 js-view-dom-id-2a4d342d0a75f95a8fd24a9e0c1443d7ff57c119c916ccd26ee73b7c6a763806'})
-        # print(table.prettify)
+        table = soup.find('div', attrs = {'class':'view view-latest-news view-id-latest_news view-display-id-block_1 js-view-dom-id-a1a22ef2d1529ec685db923c1b4f327657cd7628785210c3d18b20783f7e5434'})
+        print(table.prettify)
             
-        for field in table.findAll('div', attrs = {'class':'title'}):
-            newsList.append(field.text.strip())
+        for title in table.findAll('div', attrs = {'class':'title'}):
+            newsList.append(title.text.strip())
 
         for time in table.findAll('div', attrs={'class': 'date'}):
             timeList.append(time.text.strip())
@@ -79,7 +79,7 @@ class News:
             row['URL'] = urlList[i]
             response['list'].append(row)
 
-        # print(response)
+        print(response)
         return(response)
 
 
