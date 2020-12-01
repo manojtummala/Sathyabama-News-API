@@ -36,7 +36,7 @@ class News:
 
         for i in range(0,len(eventList)):
             row = {}
-            row['News'] = eventList[i]
+            row['Event'] = eventList[i]
             row['Time'] = timeList[i]
             row['Venue'] = venueList[i]
             row['URL'] = urlList[i]
